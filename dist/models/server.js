@@ -26,7 +26,7 @@ const bodyParser = require('body-parser');
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
-        this.port = process.env.PORT || '3001';
+        this.port = '8888' || '3001';
         this.listen();
         this.midlewares();
         this.routes();
