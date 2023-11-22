@@ -13,21 +13,21 @@ exports.newRecipe = void 0;
 const recipe_1 = require("../models/recipe");
 const newRecipe = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { img, name, description, ingredients, username } = req.body;
-    const matches = img.match(/^data:(.+);base64,(.+)$/);
-    const base64Image = matches[2];
-    const buffer = Buffer.from(base64Image, 'base64');
-    const fileExtension = matches[1].split('/')[1];
-    const fs = require('fs');
-    const timestamp = Date.now();
-    const fileName = `${timestamp}.${fileExtension}`;
-    fs.writeFile(__dirname + `../../galeria/${timestamp}.` + fileExtension, buffer, (err) => {
-        if (err)
-            throw err;
-        console.log('The file has been saved!');
-    });
+    /*     const matches = img.match(/^data:(.+);base64,(.+)$/);
+        const base64Image = matches[2];
+        const buffer = Buffer.from(base64Image, 'base64');
+        const fileExtension = matches[1].split('/')[1];
+        const fs = require('fs');
+        const timestamp = Date.now();
+        const fileName = `${timestamp}.${fileExtension}`;
+        fs.writeFile(__dirname+`../../galeria/${timestamp}.` + fileExtension, buffer, (err:any) => {
+            if (err) throw err;
+            console.log('The file has been saved!');
+          }); */
+    const imgText = 'img';
     try {
         yield recipe_1.Recipe.create({
-            img: fileName,
+            img: imgText,
             name: name,
             description: description,
             ingredients: ingredients,

@@ -6,7 +6,7 @@ export const newRecipe = async(req: Request, res: Response) => {
     const { img, name, description, ingredients, username } = req.body;
 
 
-    const matches = img.match(/^data:(.+);base64,(.+)$/);
+/*     const matches = img.match(/^data:(.+);base64,(.+)$/);
     const base64Image = matches[2];
     const buffer = Buffer.from(base64Image, 'base64');
     const fileExtension = matches[1].split('/')[1];
@@ -16,11 +16,11 @@ export const newRecipe = async(req: Request, res: Response) => {
     fs.writeFile(__dirname+`../../galeria/${timestamp}.` + fileExtension, buffer, (err:any) => {
         if (err) throw err;
         console.log('The file has been saved!');
-      });
-
+      }); */
+    const imgText = 'img';
     try {
         await Recipe.create({
-            img: fileName,
+            img: imgText,
             name: name,
             description: description,
             ingredients: ingredients,
