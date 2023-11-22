@@ -45,7 +45,12 @@ export class Server {
         this.app.use(bodyParser.json({ limit: '50mb' }));
         this.app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
         this.app.use(express.json());
-
+        this.app.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', 'https://curso-cloud-computing.netlify.app');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+            res.header('Access-Control-Allow-Headers', 'Content-Type');
+            next();
+        });
         this.app.use(cors());
 
         
