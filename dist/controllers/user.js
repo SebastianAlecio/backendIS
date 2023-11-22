@@ -39,6 +39,7 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             throw err;
         console.log('The file has been saved!');
     });
+    const img = 'imagen';
     try {
         //const avatar = `${filenameTimestamp}-${req.file?.originalname}`;
         //console.log("Contenido de avatar" + avatar);
@@ -47,7 +48,7 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         //GUARDAR USUARIO
         try {
             yield user_1.User.create({
-                avatar: fileName,
+                avatar: img,
                 name: name,
                 password: hashedPassword,
                 date: date,
