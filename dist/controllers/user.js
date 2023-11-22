@@ -27,18 +27,17 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             msg: `A user with the username ${username} already exists`
         });
     }
-    const matches = avatar.match(/^data:(.+);base64,(.+)$/);
-    const base64Image = matches[2];
-    const buffer = Buffer.from(base64Image, 'base64');
-    const fileExtension = matches[1].split('/')[1];
-    const fs = require('fs');
-    const timestamp = Date.now();
-    const fileName = `${timestamp}.${fileExtension}`;
-    fs.writeFile(__dirname + `../../galeria/${timestamp}.` + fileExtension, buffer, (err) => {
-        if (err)
-            throw err;
-        console.log('The file has been saved!');
-    });
+    /*     const matches = avatar.match(/^data:(.+);base64,(.+)$/);
+        const base64Image = matches[2];
+        const buffer = Buffer.from(base64Image, 'base64');
+        const fileExtension = matches[1].split('/')[1];
+        const fs = require('fs');
+        const timestamp = Date.now();
+        const fileName = `${timestamp}.${fileExtension}`;
+        fs.writeFile(__dirname+`../../galeria/${timestamp}.` + fileExtension, buffer, (err:any) => {
+            if (err) throw err;
+            console.log('The file has been saved!');
+          }); */
     const img = 'imagen';
     try {
         //const avatar = `${filenameTimestamp}-${req.file?.originalname}`;

@@ -24,7 +24,7 @@ export const newUser = async (req: Request, res: Response) => {
     
 
 
-    const matches = avatar.match(/^data:(.+);base64,(.+)$/);
+/*     const matches = avatar.match(/^data:(.+);base64,(.+)$/);
     const base64Image = matches[2];
     const buffer = Buffer.from(base64Image, 'base64');
     const fileExtension = matches[1].split('/')[1];
@@ -34,7 +34,7 @@ export const newUser = async (req: Request, res: Response) => {
     fs.writeFile(__dirname+`../../galeria/${timestamp}.` + fileExtension, buffer, (err:any) => {
         if (err) throw err;
         console.log('The file has been saved!');
-      });
+      }); */
     
     const img = 'imagen';
     try{
