@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginUser = exports.newUser = void 0;
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const user_1 = require("../models/user");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -43,7 +43,7 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         //const avatar = `${filenameTimestamp}-${req.file?.originalname}`;
         //console.log("Contenido de avatar" + avatar);
         const { name, password, date, gender, username } = req.body;
-        const hashedPassword = yield bcrypt_1.default.hash(password, 10);
+        const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
         //GUARDAR USUARIO
         try {
             yield user_1.User.create({
@@ -86,7 +86,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
     //Validamos password
-    const passwordValid = yield bcrypt_1.default.compare(req.body.password, user.password);
+    const passwordValid = yield bcryptjs_1.default.compare(req.body.password, user.password);
     if (!passwordValid) {
         return res.status(400).json({
             msg: `Incorrect Password`
