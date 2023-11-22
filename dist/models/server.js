@@ -39,6 +39,7 @@ class Server {
         });
     }
     routes() {
+        this.app.options('*', (0, cors_1.default)());
         this.app.use('/menu', recipe_2.default);
         this.app.use('/users', user_1.default);
         this.app.use('/recipe', recipeNew_1.default);
@@ -49,16 +50,10 @@ class Server {
         });
     }
     midlewares() {
+        this.app.use((0, cors_1.default)());
         this.app.use(bodyParser.json({ limit: '50mb' }));
         this.app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
         this.app.use(express_1.default.json());
-        this.app.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', 'https://curso-cloud-computing.netlify.app');
-            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-            res.header('Access-Control-Allow-Headers', 'Content-Type');
-            next();
-        });
-        this.app.use((0, cors_1.default)());
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {
